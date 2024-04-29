@@ -79,6 +79,7 @@ class Merchant(Entity):
         self.interaction = bool(self.game.player.hitbox.colliderect(self.hitbox) or self.game.player2.hitbox.colliderect(self.hitbox))
 
 
+
     def draw(self):
         # self.draw_shadow(self.room.tile_map.map_surface)
         self.draw_shadow(self.room.tile_map.map_surface, 100, (0,0,40, 14), -15 + self.animation_frame,3)

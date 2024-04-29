@@ -63,12 +63,13 @@ class HealthBar:
                 self.game.screen.blit(self.block, (i * 15 + 290, 0))
                 end_position = (i * 15 + 290, 0)
             self.game.screen.blit(self.end, end_position)
-            
+
 
 
 class PlayerGold:
     def __init__(self, player):
         self.name = player.name
+
         self.image_size = (24, 24)
         self.image = None
         self.load_image()
@@ -156,6 +157,7 @@ class Hud:
         self.rect.midtop = (21 / 2 * 64, utils.world_size[1] - 1.4 * 64)
         self.items_positions = [[580, self.position[1] + 4], [644 + 4, self.position[1] + 4],
                                 [708 + 8, self.position[1] + 4]]
+
         if(name == "player"):
             self.player = self.game.player
             self.gold = PlayerGold(self.game.player)
@@ -168,6 +170,7 @@ class Hud:
             self.shield = PlayerShield(self.game.player2)
             self.attack = PlayerAttack(self.game.player2)
             self.health_bar = HealthBar(self.game.player2, self.game)
+
 
     def draw_items(self):
         # works for 3 items

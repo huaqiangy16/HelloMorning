@@ -86,7 +86,7 @@ class Enemy(Entity):
     def change_speed(self):  # changes speed every 1.5s
         if time_passed(self.move_time, 1500):
             self.move_time = pygame.time.get_ticks()
-            self.speed = random.randint(250, 300)
+            self.speed = random.randint(10, 60)
             return True
 
     def move(self):
@@ -139,6 +139,7 @@ class Enemy(Entity):
         if distance_to_player < radius:
             if not self.destination_position:
                 self.pick_random_spot(player)
+
             dir_vector = pygame.math.Vector2(self.destination_position[0] - self.hitbox.x,
                                              self.destination_position[1] - self.hitbox.y)
             if dir_vector.length_squared() > 0:
@@ -196,6 +197,7 @@ class Imp(Enemy):
         self.destination_position = None
 
     def shoot(self):
+
         if not sum(self.velocity) and time_passed(self.time, 750) and (self.game.player.dead is False or self.game.player2.dead is False) and not self.dead:
             self.time = pygame.time.get_ticks()
             d1 = pygame.math.Vector2(self.game.player.hitbox.x - self.hitbox.x,
@@ -210,6 +212,7 @@ class Imp(Enemy):
                 self.game.bullet_manager.add_bullet(
                     ImpBullet(self.game, self, self.room, self.hitbox.midbottom[0], self.hitbox.midbottom[1],
                         self.game.player2.hitbox.midbottom))
+
             self.game.sound_manager.play(pygame.mixer.Sound('./assets/sound/Shoot5.wav'))
 
     def update(self):

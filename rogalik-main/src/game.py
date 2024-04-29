@@ -80,7 +80,7 @@ class Game:
         self.particle_manager.update_particles()
         self.particle_manager.update_fire_particles()
         self.bullet_manager.update()
-        self.background.update()
+        #self.background.update()
         self.world_manager.update()
         self.game_over.update()
         self.mini_map.update()
@@ -121,7 +121,7 @@ class Game:
             self.menu.play_button.clicked = False
 
     def run_game(self):
-        host = '131.179.15.231'
+        host = '172.26.235.141'
         port = 12347
         server =socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         server.bind((host, port))
